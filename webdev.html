@@ -1,0 +1,236 @@
+<html>
+<head>
+    <title>Catalog Search</title>
+    <style>
+        ::placeholder {
+          color: black;
+          opacity: 1; /* Firefox */
+        }
+
+        :-ms-input-placeholder { /* Internet Explorer 10-11 */
+         color: black;
+        }
+
+        ::-ms-input-placeholder { /* Microsoft Edge */
+         color: black;
+        }
+        .search_box{
+        width: 100%;
+        text-align:center;
+        background-color: DDDDDD;
+}
+.about{
+    text-align: right;
+    size: 300px;
+    : black;
+}
+body{
+    background-color: DDDDDD;
+}
+
+a{
+    color: #000000;
+    font-size: 40px;    
+    background-color: transparent;
+    text-decoration: none;
+    font-family: sans-serif;
+  }
+
+  .search_box input {
+      border: none;
+      outline: none;
+    height:60px;
+    width: 250px;
+}
+.search_box::-moz-placeholder {
+    font-family: 'myFont', Arial, Helvetica, sans-serif;  
+    color: black;
+ }
+ .corner{
+     border-radius: 0px;
+     color: black;
+ }
+
+ .list{
+     text-align: left;
+     font-size:30px;
+     font-family: sans-serif;
+ }
+
+ .empty{
+     height: 80px;
+ }
+ .last{
+
+    font-family: sans-serif;
+    font-size: 25px;
+    font-weight: lighter;
+    text-decoration: none;
+    background-color: white;
+ }
+        </style>
+
+</head>
+<body onload="javascript:onLoad()">
+    <form name="main">
+        <div class="about">
+
+            <p><emp><a  href="https://roverbk.github.io/About-me/">About Me</a></emp>
+        </div>
+        <div class="empty"></div>
+
+        <div class="search_box">
+            <input type="text" id="searchctl" class="corner" STYLE="color:black; font-family:sans-serif;  font-size: 20px; background-color: #9D9D9D;" size="10" maxlength="30" value="" placeholder="Search Bar"  onInput="javascript:onInput() "/>
+        </div>
+    </form>
+    <div class = empty></div>
+    <div class="last">
+        <p class="list"><h3>Product Listings</h3></p>
+
+        <div id="srchexpr"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+    </div>
+</body>
+</html>
+
+<script language="JavaScript">
+function onInput()
+{
+    // This reads the text from the edit control
+    var searchctl;
+    searchctl = document.getElementById("searchctl");
+    var searchtxt;
+    searchtxt = searchctl.value.toLowerCase();
+
+    // Find matching product names
+    desctxt = "<table style=\"width:100%\">"
+            + "<tr><td width=\"10%\"><b>Name</b></td>"
+            + "<td width=\"50%\"><b>Description</b></td>"
+            + "<td width=\"40%\"></td></tr>";
+    var searchlen = searchtxt.length;
+    for (var i = 0; i < num_products; i++)
+    {
+        if (searchtxt == names[i].substring(0,searchlen).toLowerCase())
+        {
+            desctxt += "<tr>"
+                    + "<td>" + names[i] + "</td>"
+                    + "<td>" + descriptions[i] + "</td>"
+                    + "<td align=\"right\"><img  width=\"300\" src=\"" + images[i] + "\"/></td>"
+                    + "</tr>";
+        }
+    }
+    desctxt += "</table>";
+
+    // This sets the text below the edit control
+    var srchexpr;
+    srchexpr = document.getElementById("srchexpr");
+    srchexpr.innerHTML = desctxt;
+}
+
+function onLoad()
+{
+    onInput();
+    document.getElementById("searchctl").focus();
+}
+
+const num_products = 30;
+
+const names = [
+    "iPhone 9",
+    "iPhone X",
+    "Samsung Universe 9",
+    "OPPOF19",
+    "Huawei P30",
+    "MacBook Pro",
+    "Samsung Galaxy Book",
+    "Microsoft Surface Laptop 4",
+    "Infinix INBOOK",
+    "HP Pavilion 15-DK1056WM",
+    "perfume Oil",
+    "Brown Perfume",
+    "Fog Scent Xpressio Perfume",
+    "Non-Alcoholic Concentrated Perfume Oil",
+    "Eau De Perfume Spray",
+    "Hyaluronic Acid Serum",
+    "Tree Oil 30ml",
+    "Oil Free Moisturizer 100ml",
+    "Skin Beauty Serum.",
+    "Freckle Treatment Cream- 15gm",
+    "- Daal Masoor 500 grams",
+    "Elbow Macaroni - 400 gm",
+    "Orange Essence Food Flavou",
+    "cereals muesli fruit nuts",
+    "Gulab Powder 50 Gram",
+    "Plant Hanger For Home",
+    "Flying Wooden Bird",
+    "3D Embellishment Art Lamp",
+    "Handcraft Chinese style",
+    "Key Holder"];
+
+const descriptions = [
+    "An apple mobile which is nothing like apple",
+    "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+    "Samsung's new variant which goes beyond Galaxy to the Universe",
+    "OPPO F19 is officially announced on April 2021.",
+    "Huaweiâ€™s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+    "MacBook Pro 2021 with mini-LED display may launch between September, November",
+    "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+    "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+    "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey â€“ 1 Year Warranty",
+    "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
+    "Mega Discount, Impression of Acqua Di Gio by GiorgioArmani concentrated attar perfume Oil",
+    "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
+    "Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men",
+    "Original Al MunakhÂ® by Mahal Al Musk | Our Impression of Climate | 6ml Non-Alcoholic Concentrated Perfume Oil",
+    "Genuine Al-Rehab spray perfume from UAE/Saudi Arabia/Yemen High Quality",
+    "L'OrÃƒÂ©al Paris introduces Hyaluron Expert Replumping Serum formulated with 1.5% Hyaluronic Acid",
+    "Tea tree oil contains a number of compounds, including terpinen-4-ol, that have been shown to kill certain bacteria,",
+    "Dermive Oil Free Moisturizer with SPF 20 is specifically formulated with ceramides, hyaluronic acid & sunscreen.",
+    "Product name: rorec collagen hyaluronic acid white face serum riceNet weight: 15 m",
+    "Fair & Clear is Pakistan's only pure Freckle cream which helpsfade Freckles, Darkspots and pigments. Mercury level is 0%, so there are no side effects.",
+    "Fine quality Branded Product Keep in a cool and dry place",
+    "Product details of Bake Parlor Big Elbow Macaroni - 400 gm",
+    "Specifications of Orange Essence Food Flavour For Cakes and Baking Food Item",
+    "original fauji cereal muesli 250gm box pack original fauji cereals muesli fruit nuts flakes breakfast cereal break fast faujicereals cerels cerel foji fouji",
+    "Dry Rose Flower Powder Gulab Powder 50 Gram â€¢ Treats Wounds",
+    "Boho Decor Plant Hanger For Home Wall Decoration Macrame Wall Hanging Shelf",
+    "Package Include 6 Birds with Adhesive Tape Shape: 3D Shaped Wooden Birds Material: Wooden MDF, Laminated 3.5mm",
+    "3D led lamp sticker Wall sticker 3d wall art light on/off button cell operated (included)",
+    "Handcraft Chinese style art luxury palace hotel villa mansion home decor ceramic vase with brass fruit plate",
+    "Attractive DesignMetallic materialFour key hooksReliable & DurablePremium Quality"];
+
+const images = [
+    "https://dummyjson.com/image/i/products/1/1.jpg",
+    "https://dummyjson.com/image/i/products/2/1.jpg",
+    "https://dummyjson.com/image/i/products/3/1.jpg",
+    "https://dummyjson.com/image/i/products/4/1.jpg",
+    "https://dummyjson.com/image/i/products/5/1.jpg",
+    "https://dummyjson.com/image/i/products/6/1.png",
+    "https://dummyjson.com/image/i/products/7/1.jpg",
+    "https://dummyjson.com/image/i/products/8/1.jpg",
+    "https://dummyjson.com/image/i/products/9/1.jpg",
+    "https://dummyjson.com/image/i/products/10/1.jpg",
+    "https://dummyjson.com/image/i/products/11/1.jpg",
+    "https://dummyjson.com/image/i/products/12/1.jpg",
+    "https://dummyjson.com/image/i/products/13/1.jpg",
+    "https://dummyjson.com/image/i/products/14/1.jpg",
+    "https://dummyjson.com/image/i/products/15/1.jpg",
+    "https://dummyjson.com/image/i/products/16/1.png",
+    "https://dummyjson.com/image/i/products/17/1.jpg",
+    "https://dummyjson.com/image/i/products/18/1.jpg",
+    "https://dummyjson.com/image/i/products/19/1.jpg",
+    "https://dummyjson.com/image/i/products/20/1.jpg",
+    "https://dummyjson.com/image/i/products/21/1.png",
+    "https://dummyjson.com/image/i/products/22/1.jpg",
+    "https://dummyjson.com/image/i/products/23/1.jpg",
+    "https://dummyjson.com/image/i/products/24/1.jpg",
+    "https://dummyjson.com/image/i/products/25/1.png",
+    "https://dummyjson.com/image/i/products/26/1.jpg",
+    "https://dummyjson.com/image/i/products/27/1.jpg",
+    "https://dummyjson.com/image/i/products/28/1.jpg",
+    "https://dummyjson.com/image/i/products/29/1.jpg",
+    "https://dummyjson.com/image/i/products/30/1.jpg"];
+
+</script>
